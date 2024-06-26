@@ -1,0 +1,44 @@
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px 10px;
+}
+
+.nav-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.menu-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-bar {
+  display: flex;
+  margin: 0 auto;
+  gap: 25px;
+}
+
+.menu-search {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-button {
+  padding-top: 2px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+
+.search-input {
+  border: none;
+  border-bottom: 1px solid black;
+  appearance: none;
+  outline: none;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}

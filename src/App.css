@@ -1,0 +1,7 @@
+li {
+  list-style-type: none;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
