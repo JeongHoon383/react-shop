@@ -5,3 +5,17 @@ li {
 input:focus::-webkit-input-placeholder {
   color: transparent;
 }
+
+.ProductAll {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 80%;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+@media screen and (min-width: 767px) {
+  .ProductAll {
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -17,9 +17,12 @@ const Navbar = () => {
   ];
 
   return (
-    <div>
+    <div className="Navbar">
+      <div>
+        <FontAwesomeIcon icon={faBars} className="Nav-bars" />
+      </div>
       <div className="login-button">
-        <FontAwesomeIcon icon={faUser} />
+        <FontAwesomeIcon icon={faUser} className="login-icon" />
         <div>로그인</div>
       </div>
       <div className="nav-section">

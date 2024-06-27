@@ -1,7 +1,24 @@
+.Navbar {
+  margin-bottom: 20px;
+}
+
+.Nav-bars {
+  display: none;
+  position: absolute;
+  left: 20px;
+}
+
 .login-button {
   display: flex;
   justify-content: flex-end;
-  gap: 10px 10px;
+
+  margin-top: 30px;
+  margin-right: 50px;
+  gap: 10px;
+}
+
+.login-icon {
+  margin-top: 5px;
 }
 
 .nav-section {
@@ -12,33 +29,39 @@
 
 .menu-area {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
 }
 
 .menu-bar {
   display: flex;
-  margin: 0 auto;
   gap: 25px;
 }
 
 .menu-search {
+  position: absolute;
+  right: 20px;
   display: flex;
-  justify-content: flex-end;
+
+  border-bottom: 1px solid black;
 }
 
 .search-button {
-  padding-top: 2px;
-  padding-bottom: 10px;
+  padding-top: 5px;
   cursor: pointer;
-  border-bottom: 1px solid black;
 }
 
 .search-input {
   border: none;
-  border-bottom: 1px solid black;
   appearance: none;
   outline: none;
-  padding-left: 10px;
-  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+  .menu-area {
+    display: none;
+  }
+
+  .Nav-bars {
+    display: block;
+  }
 }
