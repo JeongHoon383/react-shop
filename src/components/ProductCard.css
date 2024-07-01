@@ -1,6 +1,9 @@
+.ProductCard {
+  cursor: pointer;
+}
+
 .ProductCard-img {
   width: 270px;
-  cursor: pointer;
 }
 
 .ProductCard-img:hover {

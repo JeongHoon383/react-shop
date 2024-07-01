@@ -5,7 +5,7 @@ import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ authenticate }) => {
   const nav = useNavigate();
   const menuList = [
     "여성",
@@ -25,7 +25,9 @@ const Navbar = () => {
       </div>
       <div className="login-button">
         <FontAwesomeIcon icon={faUser} className="login-icon" />
-        <div onClick={() => nav("/login")}>로그인</div>
+        <div onClick={() => nav("/login")}>
+          {authenticate ? "로그아웃" : "로그인"}
+        </div>
       </div>
       <div className="nav-section">
         <img

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 
-const ProductAll = () => {
+const ProductAll = ({ authenticate }) => {
   const [productList, setProductList] = useState([]);
 
   const getProducts = async () => {
@@ -18,7 +18,7 @@ const ProductAll = () => {
   return (
     <div className="ProductAll">
       {productList.map((item) => (
-        <ProductCard item={item} key={item.id} />
+        <ProductCard item={item} key={item.id} authenticate={authenticate} />
       ))}
     </div>
   );

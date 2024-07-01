@@ -1,11 +1,15 @@
 import React from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setAutentiCate }) => {
+  const nav = useNavigate();
+
   const loginUser = (e) => {
     e.preventDefault();
     console.log("login possible?");
     setAutentiCate(true);
+    nav("/");
   };
 
   return (
