@@ -1,20 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ProductCard from "../components/ProductCard";
 
-const ProductAll = ({ authenticate }) => {
-  const [productList, setProductList] = useState([]);
-
-  const getProducts = async () => {
-    let url = "http://localhost:4000/products/";
-    let res = await fetch(url);
-    let data = await res.json();
-    setProductList(data);
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
+const ProductAll = ({ authenticate, productList }) => {
   return (
     <div className="ProductAll">
       {productList.map((item) => (

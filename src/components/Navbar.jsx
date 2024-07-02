@@ -5,7 +5,7 @@ import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ authenticate }) => {
+const Navbar = ({ authenticate, setAutentiCate }) => {
   const nav = useNavigate();
   const menuList = [
     "여성",
@@ -18,6 +18,14 @@ const Navbar = ({ authenticate }) => {
     "지속가능성",
   ];
 
+  // authenticate가 true 인 상태에서 로그아웃 버튼을 눌렀을 때 false로 바뀌면서 로그 아웃이라고 이름이 바뀜
+
+  const onClickLogin = () => {
+    nav("/login");
+  };
+
+  console.log(authenticate);
+
   return (
     <div className="Navbar">
       <div>
@@ -25,8 +33,12 @@ const Navbar = ({ authenticate }) => {
       </div>
       <div className="login-button">
         <FontAwesomeIcon icon={faUser} className="login-icon" />
-        <div onClick={() => nav("/login")}>
-          {authenticate ? "로그아웃" : "로그인"}
+        <div>
+          {authenticate ? (
+            <span onClick={() => setAutentiCate(false)}>로그아웃</span>
+          ) : (
+            <span onClick={onClickLogin}>로그인</span>
+          )}
         </div>
       </div>
       <div className="nav-section">
