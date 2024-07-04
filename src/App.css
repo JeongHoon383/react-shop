@@ -14,8 +14,3 @@ input:focus::-webkit-input-placeholder {
   margin: 0 auto;
   gap: 30px;
 }
-
-/* @media screen and (min-width: 767px) {
-  .ProductAll {
-  }
-} */

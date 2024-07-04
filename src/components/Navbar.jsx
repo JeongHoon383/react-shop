@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,9 @@ import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ authenticate, setAutentiCate }) => {
+  const [searchInput, setSearchInput] = useState("");
+  console.log(searchInput);
+
   const nav = useNavigate();
   const menuList = [
     "여성",
@@ -20,11 +23,9 @@ const Navbar = ({ authenticate, setAutentiCate }) => {
 
   // authenticate가 true 인 상태에서 로그아웃 버튼을 눌렀을 때 false로 바뀌면서 로그 아웃이라고 이름이 바뀜
 
-  const onClickLogin = () => {
-    nav("/login");
+  const onClickSearch = () => {
+    console.log("테스트");
   };
-
-  console.log(authenticate);
 
   return (
     <div className="Navbar">
@@ -37,7 +38,7 @@ const Navbar = ({ authenticate, setAutentiCate }) => {
           {authenticate ? (
             <span onClick={() => setAutentiCate(false)}>로그아웃</span>
           ) : (
-            <span onClick={onClickLogin}>로그인</span>
+            <span onClick={() => nav("/login")}>로그인</span>
           )}
         </div>
       </div>
@@ -56,8 +57,23 @@ const Navbar = ({ authenticate, setAutentiCate }) => {
           ))}
         </ul>
         <div className="menu-search">
-          <FontAwesomeIcon icon={faSearch} className="search-button" />
-          <input type="text" placeholder="제품 검색" className="search-input" />
+          <div className="search-top">
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="search-button"
+              onClick={onClickSearch}
+            />
+            <input
+              type="text"
+              placeholder="제품 검색"
+              className="search-input"
+              value={searchInput}
+              onChange={(e) => {
+                setSearchInput(e.target.value);
+              }}
+            />
+          </div>
+          <span className="divider"></span>
         </div>
       </div>
     </div>
