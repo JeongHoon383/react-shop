@@ -23,6 +23,8 @@ import { useEffect, useState } from "react";
 
 // 7. 상품을 검색할 수 있다.
 // search를 눌렀을 때 input의 값과 data의 제목을 비교하여 해당 내용과 일치하는 품목을 보여줌
+// input의 값을 state에 담아주기 - o
+// input의 값과 data의 title과 비교해주기
 
 // 문제 : 로그인을 하지 않았을 때 주소창으로 접근하면 어떻게 에러를 해결해야 하는지?
 // 현재 주소창으로 접근하면 browser Router가 랜더링 될 때 다른 컴포넌트가 업데이트 되면 안된다 라고 에러가 뜸
@@ -42,6 +44,11 @@ function App() {
   }, [authenticate]);
 
   const [productList, setProductList] = useState([]);
+  const [search, setSearch] = useState("");
+
+  // search 값을 app.jsx 에서 관리하여
+  // search 값과 리스트를 비교한 함수를 productAll 로 내려준 뒤
+  // productAll 에서 받아서 productCard 로 뿌려주기
 
   const getProducts = async () => {
     let url = "http://localhost:4000/products/";
@@ -54,14 +61,33 @@ function App() {
     getProducts();
   }, []);
 
+  const onClickFilterProductList = (searchInput) => {
+    if (searchInput === "") {
+      return productList;
+    }
+    return productList.filter((item) =>
+      item.title.toLowerCase().includes(searchInput.toLowerCase())
+    );
+  };
+
+  const filterProductList = onClickFilterProductList();
+
   return (
     <>
-      <Navbar authenticate={authenticate} setAutentiCate={setAutentiCate} />
+      <Navbar
+        authenticate={authenticate}
+        setAutentiCate={setAutentiCate}
+        onClickFilterProductList={onClickFilterProductList}
+      />
       <Routes>
         <Route
           path="/"
           element={
-            <ProductAll authenticate={authenticate} productList={productList} />
+            <ProductAll
+              authenticate={authenticate}
+              productList={productList}
+              filterProductList={filterProductList}
+            />
           }
         />
         <Route
