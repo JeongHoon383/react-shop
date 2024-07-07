@@ -5,10 +5,13 @@ import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ authenticate, setAutentiCate, onClickFilterProductList }) => {
-  const [searchInput, setSearchInput] = useState("");
-  console.log(onClickFilterProductList);
-
+const Navbar = ({
+  authenticate,
+  setAutentiCate,
+  searchInput,
+  onChangeSearchInput,
+  onClickSearchInput,
+}) => {
   const nav = useNavigate();
   const menuList = [
     "여성",
@@ -22,6 +25,7 @@ const Navbar = ({ authenticate, setAutentiCate, onClickFilterProductList }) => {
   ];
 
   // authenticate가 true 인 상태에서 로그아웃 버튼을 눌렀을 때 false로 바뀌면서 로그 아웃이라고 이름이 바뀜
+  // 클릭했을 때 input에 담겨져 있는 값이 함수로 옮겨지면서 비교 시작
 
   return (
     <div className="Navbar">
@@ -57,17 +61,14 @@ const Navbar = ({ authenticate, setAutentiCate, onClickFilterProductList }) => {
             <FontAwesomeIcon
               icon={faSearch}
               className="search-button"
-              onClick={onClickFilterProductList(searchInput)}
+              onClick={onClickSearchInput}
             />
-            {/* 애초에 이 데이터를 초기화 시켜줘야 하는데 업데이트가 되는건가? searchinput 이 들어간  */}
             <input
               type="text"
               placeholder="제품 검색"
               className="search-input"
+              onChange={onChangeSearchInput}
               value={searchInput}
-              onChange={(e) => {
-                setSearchInput(e.target.value);
-              }}
             />
           </div>
           <span className="divider"></span>

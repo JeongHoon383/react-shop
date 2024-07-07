@@ -44,11 +44,31 @@ function App() {
   }, [authenticate]);
 
   const [productList, setProductList] = useState([]);
-  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+
+  const onChangeSearchInput = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const onClickSearchInput = () => {
+    return searchInput;
+  };
+
+  const filterSearchData = () => {
+    if (onClickSearchInput === "") {
+      return productList;
+    }
+    return productList.filter((filterData) =>
+      filterData.title.toLowerCase().includes(onClickSearchInput.toLowerCase())
+    );
+  };
+
+  const filterData = filterSearchData();
 
   // search 값을 app.jsx 에서 관리하여
   // search 값과 리스트를 비교한 함수를 productAll 로 내려준 뒤
   // productAll 에서 받아서 productCard 로 뿌려주기
+  // 상위 컴포넌트의 state를 변경하는 함수를 하위 컴포넌트에 뿌려줘야함.
 
   const getProducts = async () => {
     let url = "http://localhost:4000/products/";
@@ -61,23 +81,14 @@ function App() {
     getProducts();
   }, []);
 
-  const onClickFilterProductList = (searchInput) => {
-    if (searchInput === "") {
-      return productList;
-    }
-    return productList.filter((item) =>
-      item.title.toLowerCase().includes(searchInput.toLowerCase())
-    );
-  };
-
-  const filterProductList = onClickFilterProductList();
-
   return (
     <>
       <Navbar
         authenticate={authenticate}
         setAutentiCate={setAutentiCate}
-        onClickFilterProductList={onClickFilterProductList}
+        onChangeSearchInput={onChangeSearchInput}
+        searchInput={searchInput}
+        onClickSearchInput={onClickSearchInput}
       />
       <Routes>
         <Route
@@ -86,7 +97,7 @@ function App() {
             <ProductAll
               authenticate={authenticate}
               productList={productList}
-              filterProductList={filterProductList}
+              filterData={filterData}
             />
           }
         />
