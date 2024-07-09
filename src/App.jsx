@@ -44,26 +44,6 @@ function App() {
   }, [authenticate]);
 
   const [productList, setProductList] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
-
-  const onChangeSearchInput = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  const onClickSearchInput = () => {
-    return searchInput;
-  };
-
-  const filterSearchData = () => {
-    if (onClickSearchInput === "") {
-      return productList;
-    }
-    return productList.filter((filterData) =>
-      filterData.title.toLowerCase().includes(onClickSearchInput.toLowerCase())
-    );
-  };
-
-  const filterData = filterSearchData();
 
   // search 값을 app.jsx 에서 관리하여
   // search 값과 리스트를 비교한 함수를 productAll 로 내려준 뒤
@@ -83,22 +63,12 @@ function App() {
 
   return (
     <>
-      <Navbar
-        authenticate={authenticate}
-        setAutentiCate={setAutentiCate}
-        onChangeSearchInput={onChangeSearchInput}
-        searchInput={searchInput}
-        onClickSearchInput={onClickSearchInput}
-      />
+      <Navbar authenticate={authenticate} setAutentiCate={setAutentiCate} />
       <Routes>
         <Route
           path="/"
           element={
-            <ProductAll
-              authenticate={authenticate}
-              productList={productList}
-              filterData={filterData}
-            />
+            <ProductAll authenticate={authenticate} productList={productList} />
           }
         />
         <Route
