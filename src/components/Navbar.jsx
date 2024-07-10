@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SideBar from "./SideBar";
 
 const Navbar = ({ authenticate, setAutentiCate }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   // 검색기능 구현 순서
   // 엔터를 눌렀을 때 홈 url이 바뀜
   // onkeyPress 이벤트 사용, 이벤트 핸들러 함수 생성, onkeyPress 이벤트 함수는 아무키나 눌렀을 때 실행됨.
@@ -39,8 +42,13 @@ const Navbar = ({ authenticate, setAutentiCate }) => {
   // authenticate가 true 인 상태에서 로그아웃 버튼을 눌렀을 때 false로 바뀌면서 로그 아웃이라고 이름이 바뀜
   // 클릭했을 때 input에 담겨져 있는 값이 함수로 옮겨지면서 비교 시작
 
+  const toggleSide = () => {
+    setIsOpen(true);
+  };
+
   return (
     <div className="Navbar">
+      <SideBar />
       <div>
         <FontAwesomeIcon icon={faBars} className="Nav-bars" />
       </div>

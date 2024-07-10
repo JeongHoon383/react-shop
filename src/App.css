@@ -6,11 +6,26 @@ input:focus::-webkit-input-placeholder {
   color: transparent;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+}
+
 .ProductAll {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 
   width: 80%;
   margin: 0 auto;
   gap: 30px;
 }
+
+@media screen and (max-width: 768px) {
+  .ProductAll {
+    width: 80%;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 767 이상으로는 4개가 나오게, 크기는 작아지되 비율은 유지하면서 */
+/* 767 이하로는 화면에 꽉 차게 한개씩 나와야 함 */
