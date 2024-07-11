@@ -43,14 +43,18 @@ const Navbar = ({ authenticate, setAutentiCate }) => {
   // 클릭했을 때 input에 담겨져 있는 값이 함수로 옮겨지면서 비교 시작
 
   const toggleSide = () => {
-    setIsOpen(true);
+    setIsOpen((e) => !e);
   };
 
   return (
     <div className="Navbar">
-      <SideBar />
+      <SideBar toggleSide={toggleSide} isOpen={isOpen} />
       <div>
-        <FontAwesomeIcon icon={faBars} className="Nav-bars" />
+        <FontAwesomeIcon
+          icon={faBars}
+          className="Nav-bars"
+          onClick={toggleSide}
+        />
       </div>
       <div className="login-button">
         <FontAwesomeIcon icon={faUser} className="login-icon" />
