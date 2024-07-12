@@ -8,9 +8,6 @@ const ProductDetail = ({ productList }) => {
     (item) => Number(item.id) === Number(params.id)
   );
 
-  // productList 에 있는 데이터와 detail 페이지에 params.id 값이 일치하는 데이터를
-  // productDetail 컴포넌트에 뿌려줘야함. - o
-
   return (
     <div className="ProductDetail">
       <img src={curProduct.img} alt="" />

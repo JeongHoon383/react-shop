@@ -9,15 +9,6 @@ import SideBar from "./SideBar";
 const Navbar = ({ authenticate, setAutentiCate }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // 검색기능 구현 순서
-  // 엔터를 눌렀을 때 홈 url이 바뀜
-  // onkeyPress 이벤트 사용, 이벤트 핸들러 함수 생성, onkeyPress 이벤트 함수는 아무키나 눌렀을 때 실행됨.
-  // 그렇다면 엔터키만 눌렀을때 실행되도록 핸들링 해줘야함.
-  // 입력한 검색어를 읽어와서 url을 바꿔준다.
-  // navigate 함수를 이용하여 "/?q={input 값}" 바꿔줄 것
-  // 쿼리에 있는 글자 가져와서 검색기능 구현
-  // useSearchParams 리액트 훅 사용
-
   const nav = useNavigate();
   const menuList = [
     "여성",
@@ -32,15 +23,10 @@ const Navbar = ({ authenticate, setAutentiCate }) => {
 
   const onkeySearch = (e) => {
     if (e.key === "Enter") {
-      // 입력한 검색어를 읽어와서
       let keyWord = e.target.value;
-      // url을 바꿔준다.
       nav(`/?q=${keyWord}`);
     }
   };
-
-  // authenticate가 true 인 상태에서 로그아웃 버튼을 눌렀을 때 false로 바뀌면서 로그 아웃이라고 이름이 바뀜
-  // 클릭했을 때 input에 담겨져 있는 값이 함수로 옮겨지면서 비교 시작
 
   const toggleSide = () => {
     setIsOpen((e) => !e);

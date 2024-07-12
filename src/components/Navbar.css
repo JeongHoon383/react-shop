@@ -6,8 +6,6 @@
   display: none;
   position: absolute;
   left: 20px;
-
-  cursor: pointer;
 }
 
 .login-button {
@@ -82,9 +80,9 @@
 
   .Nav-bars {
     display: block;
+    cursor: pointer;
   }
   .side-menu {
     display: block;
-    overflow: hidden;
   }
 }
