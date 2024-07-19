@@ -1,53 +1,25 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
-import ProductAll from "./Pages/ProductAll";
-import PrivateRoute from "./route/PrivateRoute";
+import "./App.css";
+import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import Navbar from "./components/Navbar";
-import { useEffect, useState } from "react";
+import ProductDetail from "./Pages/ProductDetail";
+import Nav from "./Components/Nav";
+// home 페이지, 로그인 페이지, 제품 상세 페이지
+// 유저는 메뉴와 상품들을 볼 수 있다.
+// 유저는 로그인을 할 수 있다.
+// 유저는 상품 디테일을 보려면 로그인을 해야 한다.
+// 로그인한 유저는 상품 디테일 정보를 볼 수 있다.
+// 유저는 상품을 검색할 수 있다.
+// 유저는 로그아웃을 할 수 있다.
 
 function App() {
-  const [authenticate, setAutentiCate] = useState(false);
-
-  const [productList, setProductList] = useState([]);
-
-  const getProducts = async () => {
-    let url =
-      "https://my-json-server.typicode.com/JeongHoon383/react-shop/products/";
-    //
-    let res = await fetch(url);
-    let data = await res.json();
-    setProductList(data);
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   return (
     <>
-      <Navbar authenticate={authenticate} setAutentiCate={setAutentiCate} />
+      <Nav />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <ProductAll authenticate={authenticate} productList={productList} />
-          }
-        />
-        <Route
-          path="/Login"
-          element={<Login setAutentiCate={setAutentiCate} />}
-        />
-        <Route
-          path="/product/:id"
-          element={
-            <PrivateRoute
-              authenticate={authenticate}
-              productList={productList}
-            />
-          }
-        />
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/product/:id" element={<ProductDetail />}></Route>
       </Routes>
     </>
   );
