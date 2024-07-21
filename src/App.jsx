@@ -12,6 +12,8 @@ import Nav from "./Components/Nav";
 // 유저는 상품을 검색할 수 있다.
 // 유저는 로그아웃을 할 수 있다.
 
+// navbar 작업 -> 데이터 세팅 Json Server
+
 function App() {
   return (
     <>
