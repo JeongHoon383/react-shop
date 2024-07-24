@@ -9,7 +9,7 @@ const ProductItem = ({ item }) => {
       <div className="image-wrapper">
         <img src={img} alt="" className="image" />
       </div>
-      <div>{choice ? "Conscious choice" : ""}</div>
+      <div className="item-choice">{choice ? "Conscious choice" : ""}</div>
       <div>{title}</div>
       <div>₩{price.toLocaleString()}</div>
     </div>

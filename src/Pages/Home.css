@@ -5,6 +5,10 @@
   width: 80%;
   margin: 0 auto;
   gap: 30px;
+}
 
-  box-sizing: border-box;
+@media screen and (max-width: 768px) {
+  .Home {
+    grid-template-columns: 1fr;
+  }
 }
