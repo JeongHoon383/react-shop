@@ -131,3 +131,40 @@ table {
 input {
   border: unset;
 }
+
+input:focus {
+  outline: 1px solid black;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 16px;
+  outline: 0;
+  width: 16px;
+  margin: 0;
+  border: 0.8px solid #dbdbdb;
+  zoom: 1.5;
+}
+input[type="checkbox"]::after {
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  content: "";
+  display: none;
+  height: 40%;
+  left: 40%;
+  position: relative;
+  top: 20%;
+  transform: rotate(45deg);
+  width: 15%;
+}
+input[type="checkbox"]:checked {
+  background: #505bf0;
+}
+input[type="checkbox"]:checked::after {
+  display: block;
+}
