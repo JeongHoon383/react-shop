@@ -9,17 +9,30 @@ import "./Login.css";
 // 아이디 저장하기 체크박스 디자인 - 패스트 캠퍼스 참고
 
 const Login = () => {
-  const emailRegex =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const emailRegEx =
+    /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
+  const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
 
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [validation, setValidation] = useState({
+    email: false,
+    password: false,
   });
 
-  const onSubmit = () => {};
+  const LoginCheck = () => {
+    setValidation({
+      ...validation,
+      email: emailRegEx.test(email),
+      password: passwordRegEx.test(password),
+    });
+  };
+
+  // email, password - 정규표현식에 따라서 true, false 반환됨
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="Login">
@@ -30,16 +43,31 @@ const Login = () => {
         </label>
         <input
           type="email"
+          name="email"
+          autoComplete="off"
           placeholder="이메일 주소를 입력해 주세요."
           className="Login-input"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            LoginCheck(email);
+          }}
         />
+        {}
         <label htmlFor="password" className="Login-title">
           비밀번호
         </label>
         <input
           type="password"
+          name="password"
+          autoComplete="off"
           placeholder="비밀번호를 입력해 주세요."
           className="Login-input"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            LoginCheck(password);
+          }}
         />
         <label htmlFor="checkbox" className="id-checkbox">
           <input type="checkbox" />
