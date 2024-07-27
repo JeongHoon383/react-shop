@@ -5,14 +5,14 @@
   margin: 0 auto;
 
   width: 300px;
-  height: 50vh;
+  height: 60vh;
 }
 
 .Login h2 {
   font-size: 2em;
   font-weight: 600;
 
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .Login-form {
@@ -24,14 +24,13 @@
 
 .Login-title {
   font-size: 0.8em;
-  margin-bottom: 5px;
+  margin: 30px 0 5px 0;
   color: #6c6c6c;
 }
 
 .Login-input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
 
   box-sizing: border-box;
   border: 0.8px solid #dbdbdb;
@@ -41,9 +40,18 @@
   color: #dbdbdb;
 }
 
+.Login-validation-text {
+  margin-top: 5px;
+
+  color: #de7078;
+  font-size: 13px;
+}
+
 .id-checkbox {
   display: flex;
   align-items: center;
+
+  margin-top: 30px;
 }
 
 .id-checkbox span {
