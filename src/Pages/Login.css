@@ -67,4 +67,11 @@
   font-size: 1em;
   border: none;
   border-radius: 2px;
+  transition: all ease 0.2s 0s;
+}
+
+.Login-validation {
+  background-color: black;
+  color: white;
+  transition: all ease 0.2s 0s;
 }

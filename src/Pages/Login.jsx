@@ -20,6 +20,10 @@ const Login = () => {
     password: false,
   });
 
+  const isValid =
+    validation.email && validation.password && email !== "" && password !== "";
+
+  // 7월 27일 버튼 활성화 기능
   // validation 내부 키값들이 true 일 경우
   // 버튼 색깔이 바뀌게 - transition도 주면서
   // false 일 경우 회색 배경에 검정글씨, true 일 경우 검정 배경에 흰색 글씨
@@ -31,11 +35,6 @@ const Login = () => {
       password: passwordRegEx.test(password),
     });
   };
-
-  console.log(validation);
-
-  // email, password - 정규표현식에 따라서 true, false 반환됨
-  // true 일때 문구, false일때 문구
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -60,16 +59,11 @@ const Login = () => {
             LoginCheck(email);
           }}
         />
-        {validation.email ? (
-          ""
-        ) : email == "" ? (
-          ""
-        ) : (
+        {!validation.email && email !== "" && (
           <div className="Login-validation-text">
             규칙에 맞는 이메일 주소를 입력해 주세요.
           </div>
         )}
-
         <label htmlFor="password" className="Login-title">
           비밀번호
         </label>
@@ -85,19 +79,17 @@ const Login = () => {
             LoginCheck(password);
           }}
         />
-        {validation.password ? (
-          ""
-        ) : password == "" ? (
-          ""
-        ) : (
+        {!validation.password && password !== "" && (
           <div className="Login-validation-text">8자 이상 입력해 주세요.</div>
         )}
-
         <label htmlFor="checkbox" className="id-checkbox">
           <input type="checkbox" />
           <span>아이디 저장하기</span>
         </label>
-        <button type="submit" className="Login-button">
+        <button
+          type="submit"
+          className={`Login-button ${isValid ? "Login-validation" : ""}`}
+        >
           로그인
         </button>
       </form>
