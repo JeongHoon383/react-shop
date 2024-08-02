@@ -5,9 +5,27 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+// 로그인 상태일때 로그아웃 텍스트를 클릭하면 "로그아웃 하시겠습니까?" 라는 alert 창이 나오게
 
 const Nav = () => {
-  const nav = useNavigate();
+  const navigate = useNavigate();
+
+  const Login = useSelector((state) => state.Login);
+  const dispatch = useDispatch();
+
+  const LoginOut = () => {
+    if (Login == true) {
+      dispatch({
+        type: "LOGOUT",
+      });
+    } else {
+      navigate("/login");
+    }
+  };
+
+  console.log(Login);
 
   return (
     <div className="Nav">
@@ -15,10 +33,10 @@ const Nav = () => {
         <FontAwesomeIcon icon={faBars} className="nav-bars" />
         <div className="nav-login">
           <FontAwesomeIcon icon={faUser} />
-          <div onClick={() => nav("/login")}>로그인</div>
+          <div onClick={LoginOut}>{Login ? "로그아웃" : "로그인"}</div>
         </div>
       </div>
-      <div className="nav-img" onClick={() => nav("/")}>
+      <div className="nav-img" onClick={() => navigate("/")}>
         <img
           width={100}
           src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYt80C%2FbtqDeJAYUBo%2FJQbTuukRladq2AUOeqgiEK%2Fimg.jpg"
