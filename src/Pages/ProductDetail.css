@@ -1,3 +1,26 @@
 .ProductDetail {
   display: flex;
+  margin: 0 auto;
+
+  gap: 30px;
+
+  width: 80%;
+}
+
+.ProductDetail-img {
+  width: 100%;
+}
+
+.ProductDetail-img img {
+  width: 100%;
+}
+
+.ProductDetail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  font-size: 1.5em;
+
+  width: 100%;
 }
