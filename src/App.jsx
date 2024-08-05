@@ -4,7 +4,6 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import ProductDetail from "./Pages/ProductDetail";
 import Nav from "./Components/Nav";
-import Error from "./Pages/Error";
 import { useEffect, useState } from "react";
 // home 페이지, 로그인 페이지, 제품 상세 페이지 - o
 // 유저는 메뉴와 상품들을 볼 수 있다. - o
@@ -39,7 +38,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route
           path="/product/:id"
-          element={<ProductDetail product={product || []} />}
+          element={<ProductDetail product={product} />}
         ></Route>
       </Routes>
     </>
