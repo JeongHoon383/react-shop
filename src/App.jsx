@@ -15,6 +15,10 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [product, setProduct] = useState([]);
+  const mockData = {
+    name: "hoon",
+    age: 29,
+  };
 
   useEffect(() => {
     const url = "http://localhost:4000/products";
