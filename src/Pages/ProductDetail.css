@@ -24,3 +24,45 @@
 
   width: 100%;
 }
+
+.select-container {
+  position: relative;
+
+  width: 146px;
+}
+
+.select-button {
+  border: 1.5px solid black;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.button-drop-down {
+  margin-left: 10px;
+}
+
+.select-option {
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 100%;
+
+  background-color: white;
+  border: 1px solid #d9d9d9;
+}
+
+.select-option-none {
+  display: none;
+}
+
+.option-item {
+  padding: 10px 15px;
+}
+
+.option-item:hover {
+  background-color: #e9ecef;
+}
