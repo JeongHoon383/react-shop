@@ -1,14 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import "./ProductDetail.css";
 
-// 사이즈 선택을 눌렀을 때 li 태그가 내려오게
-// li 태그
+// 사이즈 선택을 눌렀을 때 li 태그가 내려오게 - o
+// dropMenu 바탕화면 눌렀을때 닫히게 - o
+// dropMenu li 요소들 선택시 값이 출력되게
+// 1) li 요소들의 값 담아주기
 
 const ProductDetail = ({ product }) => {
-  const [showOption, setShowOption] = useState(false);
+  const dropMenuRef = useRef();
+
+  const [isDropMenuOpen, setDropMenuOpen] = useState(false);
+
+  const [selected, setSelected] = useState("");
+
+  const handleSelect = (e) => {
+    setSelected(e.target.value);
+  };
+
+  console.log(selected);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", clickModalOutSide);
+
+    return () => {
+      document.removeEventListener("mousedown", clickModalOutSide);
+    };
+  }, [isDropMenuOpen]);
+
+  const clickModalOutSide = (e) => {
+    if (isDropMenuOpen && !dropMenuRef.current.contains(e.target)) {
+      setDropMenuOpen(false);
+    }
+  };
 
   const params = useParams();
 
@@ -20,10 +46,6 @@ const ProductDetail = ({ product }) => {
     return <div>Loading...</div>;
   }
 
-  const onClickSelect = () => {
-    setShowOption(!showOption);
-  };
-
   return (
     <div className="ProductDetail">
       <div className="ProductDetail-img">
@@ -34,23 +56,29 @@ const ProductDetail = ({ product }) => {
         <div>₩{Number(curProduct.price).toLocaleString()}</div>
         <div>{curProduct.choice ? "Conscious choice" : ""}</div>
         <div className="select-container">
-          <button className="select-button" onClick={onClickSelect}>
+          <button
+            className="select-button"
+            ref={dropMenuRef}
+            onClick={() => setDropMenuOpen(!isDropMenuOpen)}
+          >
             사이즈 선택
             <span className="button-drop-down">
               <FontAwesomeIcon icon={faCaretDown} />
             </span>
           </button>
-          <ul
+          <div
+            onChange={handleSelect}
+            value={selected}
             className={`select-option ${
-              showOption ? "" : "select-option-none"
+              isDropMenuOpen ? "" : "select-option-none"
             }`}
           >
             {curProduct.size.map((item, index) => (
-              <li className="option-item" key={index}>
+              <div className="option-item" key={index} value={item}>
                 {item}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
         <div>
           <button>추가</button>
