@@ -10,15 +10,11 @@ import { useEffect, useState } from "react";
 // 유저는 로그인을 할 수 있다. - o
 // 유저는 상품 디테일을 보려면 로그인을 해야 한다.
 // 로그인한 유저는 상품 디테일 정보를 볼 수 있다.
-// 유저는 상품을 검색할 수 있다.
-// 유저는 로그아웃을 할 수 있다.
+// 유저는 상품을 검색할 수 있다. - o
+// 유저는 로그아웃을 할 수 있다. - o
 
 function App() {
   const [product, setProduct] = useState([]);
-  const mockData = {
-    name: "hoon",
-    age: 29,
-  };
 
   useEffect(() => {
     const url = "http://localhost:4000/products";

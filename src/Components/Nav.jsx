@@ -7,10 +7,16 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// 로그인 상태일때 로그아웃 텍스트를 클릭하면 "로그아웃 하시겠습니까?" 라는 alert 창이 나오게
-
 const Nav = () => {
   const navigate = useNavigate();
+
+  const enterSearch = (e) => {
+    if (e.key === "Enter") {
+      let keyword = e.target.value;
+      navigate(`/?q=${keyword}`);
+      console.log("enter");
+    }
+  };
 
   const Login = useSelector((state) => state.Login);
   const dispatch = useDispatch();
@@ -24,8 +30,6 @@ const Nav = () => {
       navigate("/login");
     }
   };
-
-  console.log(Login);
 
   return (
     <div className="Nav">
@@ -61,6 +65,7 @@ const Nav = () => {
               className="nav-search-icon"
             />
             <input
+              onKeyDown={enterSearch}
               type="text"
               placeholder="제품 검색"
               className="nav-search-input"

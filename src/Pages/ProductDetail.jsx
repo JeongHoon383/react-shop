@@ -6,8 +6,6 @@ import "./ProductDetail.css";
 
 // 사이즈 선택을 눌렀을 때 li 태그가 내려오게 - o
 // dropMenu 바탕화면 눌렀을때 닫히게 - o
-// dropMenu li 요소들 선택시 값이 출력되게
-// 1) li 요소들의 값 담아주기
 
 const ProductDetail = ({ product }) => {
   const dropMenuRef = useRef();
@@ -19,9 +17,6 @@ const ProductDetail = ({ product }) => {
   const handleSelect = (e) => {
     setSelected(e.target.value);
   };
-
-  console.log(selected);
-
   useEffect(() => {
     document.addEventListener("mousedown", clickModalOutSide);
 
