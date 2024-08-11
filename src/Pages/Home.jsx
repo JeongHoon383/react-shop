@@ -8,8 +8,6 @@ const Home = ({ product }) => {
 
   const searchQuery = query.get("q");
 
-  console.log(searchQuery);
-
   const filterProduct = () => {
     if (!searchQuery) {
       return product;

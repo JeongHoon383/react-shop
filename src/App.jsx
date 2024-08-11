@@ -5,6 +5,7 @@ import Login from "./Pages/Login";
 import ProductDetail from "./Pages/ProductDetail";
 import Nav from "./Components/Nav";
 import { useEffect, useState } from "react";
+import PrivateRoute from "./Pages/PrivateRoute";
 // home 페이지, 로그인 페이지, 제품 상세 페이지 - o
 // 유저는 메뉴와 상품들을 볼 수 있다. - o
 // 유저는 로그인을 할 수 있다. - o
@@ -36,10 +37,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home product={product} />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route
-          path="/product/:id"
-          element={<ProductDetail product={product} />}
-        ></Route>
+        <Route element={<PrivateRoute product={product} />}>
+          <Route path="/product/:id" element={<ProductDetail />} />
+        </Route>
       </Routes>
     </>
   );
